@@ -5,9 +5,9 @@ export default function TrackerChain() {
   return (
       <div className="flex flex-row items-center gap-5">
         <TrackerBox/>
-        <FaLongArrowAltRight className="text-3xl"/>
+        <FaLongArrowAltRight className="text-3xl text-white"/>
         <TrackerBox />
-        <FaLongArrowAltRight className="text-3xl"/>
+        <FaLongArrowAltRight className="text-3xl text-white"/>
         <TrackerBox/>
       </div>
   );
