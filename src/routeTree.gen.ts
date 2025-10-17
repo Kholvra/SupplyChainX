@@ -11,11 +11,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TransactionRouteImport } from './routes/transaction'
 
 const TrackLazyRouteImport = createFileRoute('/track')()
 const LoginLazyRouteImport = createFileRoute('/login')()
 const DashboardLazyRouteImport = createFileRoute('/dashboard')()
-const AddTransactionLazyRouteImport = createFileRoute('/AddTransaction')()
 const IndexLazyRouteImport = createFileRoute('/')()
 
 const TrackLazyRoute = TrackLazyRouteImport.update({
@@ -33,13 +33,11 @@ const DashboardLazyRoute = DashboardLazyRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/dashboard.lazy').then((d) => d.Route))
-const AddTransactionLazyRoute = AddTransactionLazyRouteImport.update({
-  id: '/AddTransaction',
-  path: '/AddTransaction',
+const TransactionRoute = TransactionRouteImport.update({
+  id: '/transaction',
+  path: '/transaction',
   getParentRoute: () => rootRouteImport,
-} as any).lazy(() =>
-  import('./routes/AddTransaction.lazy').then((d) => d.Route),
-)
+} as any)
 const IndexLazyRoute = IndexLazyRouteImport.update({
   id: '/',
   path: '/',
@@ -48,14 +46,14 @@ const IndexLazyRoute = IndexLazyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/AddTransaction': typeof AddTransactionLazyRoute
+  '/transaction': typeof TransactionRoute
   '/dashboard': typeof DashboardLazyRoute
   '/login': typeof LoginLazyRoute
   '/track': typeof TrackLazyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/AddTransaction': typeof AddTransactionLazyRoute
+  '/transaction': typeof TransactionRoute
   '/dashboard': typeof DashboardLazyRoute
   '/login': typeof LoginLazyRoute
   '/track': typeof TrackLazyRoute
@@ -63,22 +61,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
-  '/AddTransaction': typeof AddTransactionLazyRoute
+  '/transaction': typeof TransactionRoute
   '/dashboard': typeof DashboardLazyRoute
   '/login': typeof LoginLazyRoute
   '/track': typeof TrackLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/AddTransaction' | '/dashboard' | '/login' | '/track'
+  fullPaths: '/' | '/transaction' | '/dashboard' | '/login' | '/track'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/AddTransaction' | '/dashboard' | '/login' | '/track'
-  id: '__root__' | '/' | '/AddTransaction' | '/dashboard' | '/login' | '/track'
+  to: '/' | '/transaction' | '/dashboard' | '/login' | '/track'
+  id: '__root__' | '/' | '/transaction' | '/dashboard' | '/login' | '/track'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  AddTransactionLazyRoute: typeof AddTransactionLazyRoute
+  TransactionRoute: typeof TransactionRoute
   DashboardLazyRoute: typeof DashboardLazyRoute
   LoginLazyRoute: typeof LoginLazyRoute
   TrackLazyRoute: typeof TrackLazyRoute
@@ -107,11 +105,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/AddTransaction': {
-      id: '/AddTransaction'
-      path: '/AddTransaction'
-      fullPath: '/AddTransaction'
-      preLoaderRoute: typeof AddTransactionLazyRouteImport
+    '/transaction': {
+      id: '/transaction'
+      path: '/transaction'
+      fullPath: '/transaction'
+      preLoaderRoute: typeof TransactionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -126,7 +124,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  AddTransactionLazyRoute: AddTransactionLazyRoute,
+  TransactionRoute: TransactionRoute,
   DashboardLazyRoute: DashboardLazyRoute,
   LoginLazyRoute: LoginLazyRoute,
   TrackLazyRoute: TrackLazyRoute,
