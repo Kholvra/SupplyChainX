@@ -1,7 +1,7 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import Container from "../components/Container";
 
-export const Route = createLazyFileRoute("/AddTransaction")({
+export const Route = createFileRoute("/transaction")({
   component: AddTransaction,
 });
 

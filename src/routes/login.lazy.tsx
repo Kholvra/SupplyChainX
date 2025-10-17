@@ -3,10 +3,10 @@ import Button from "../components/Button";
 import Container from "../components/Container";
 
 export const Route = createLazyFileRoute("/login")({
-  component: RouteComponent,
+  component: Login,
 });
 
-function RouteComponent() {
+function Login() {
   return (
     <Container>
       <h1 className="text-5xl text-white">Login</h1>
